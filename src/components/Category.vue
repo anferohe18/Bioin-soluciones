@@ -17,7 +17,7 @@ Al seleccionar un producto, se pasa al componente de "Product.vue"
         v-for="product in getDevicesByCategoryName"
         :key="product.name"
       >
-        <button @click="selectProduct(product.name, product.id)">
+        <button @click="selectDevice(product.name)">
           <!-- Change the src -->
           <img v-bind:src="product.imagePath" />
           <p>{{ product.name }}</p>
@@ -29,13 +29,12 @@ Al seleccionar un producto, se pasa al componente de "Product.vue"
 </template>
 
 <script>
-import axios from "axios";
 import gql from 'graphql-tag'
 export default {
   name: "Category",
   data: function () {
     return {
-      category: "",
+      category: localStorage.getItem("categoryName"),
       getDevicesByCategoryName: [],
     };
   },
@@ -54,15 +53,20 @@ export default {
           }
         }
       `,
-      variables: {
-        "categoryName": localStorage.getItem("category")
+      variables() {
+        return {
+					categoryName: localStorage.getItem("categoryName")
+				}
       },
     },
   },
   methods: {
-    
+    selectDevice: function(deviceName){
+      localStorage.setItem("deviceName", deviceName)
+      this.$emit("loadDevice", deviceName, localStorage.getItem("categoryName"));
+    },
     selectProduct: function (productName, id) {
-      localStorage.setItem("product", productName);
+      localStorage.setItem("productName", productName);
       localStorage.setItem("idProduct", id);
       const categoryName = localStorage.getItem("category");
 
@@ -73,6 +77,11 @@ export default {
       this.$emit("loadAdd");
     },
   },
+  created: function(){
+
+  }
+
+
 };
 //PENDIENTE TERMINAR EL SCRIPT
 </script>

@@ -24,6 +24,8 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
             v-on:loadSignUp="loadSignUp"
             v-on:loadAdd="loadAdd"
             v-on:loadHome="loadHome"
+
+            v-on:loadDevice="loadDevice"
           ></router-view>
         </div>
 
@@ -80,11 +82,11 @@ export default {
     loadSignUp: function () {
       this.$router.push({ name: "signUp" });
     },
-    loadCategory: function (category) {
+    loadCategory: function (categoryName) {
       this.$router.push({
         name: "category",
         params: {
-          category: category,
+          categoryName,
         },
       });
     },
@@ -128,6 +130,17 @@ export default {
       alert("Registro Exitoso");
       this.loadLogIn();
     },
+
+
+    loadDevice: function(deviceName, categoryName){
+      this.$router.push({
+        name: "device",
+        params: {
+          categoryName,
+          deviceName
+        }
+      })
+    }
   },
  
 };

@@ -51,13 +51,15 @@ export default {
         }
       `,
       variables(){
-        name: null;
+        return {
+          name: null
+        }
       }
     }
   },
   methods: {
     selectCategory: function (name, id) {
-      localStorage.setItem("category", name);
+      localStorage.setItem("categoryName", name);
       localStorage.setItem("categoryId", id);
       this.$emit("loadCategory", name);
     },

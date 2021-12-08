@@ -8,51 +8,53 @@ import LogIn from './components/LogIn.vue'
 import SignUp from './components/SignUp.vue'
 import Categories from './components/Categories.vue'
 import Category from './components/Category.vue'
-import Product from './components/Product.vue'
-import ProductInfo from './components/ProductInfo.vue'
-import Add from './components/Add.vue'
 
+import Device from './components/Device.vue'
 
 const routes = [
   {
     path: '/',
     name: 'root',
-    component: App
+    component: App,
+    meta: {requiresAuth: false}
   },
   {
     path: '/user/logIn',
     name: "logIn",
-    component: LogIn
+    component: LogIn,
+    meta: {requiresAuth: false}
+
   },
   {
     path: '/user/signUp',
     name: "signUp",
-    component: SignUp
+    component: SignUp,
+    meta: {requiresAuth: false}
+
   },
   {
     path: '/categories',
     name: "categories",
-    component: Categories
+    component: Categories,
+    meta: {requiresAuth: false}
+
   },
   {
-    path: '/:category',
+    path: '/:categoryName/devices',
     name: "category",
-    component: Category
+    component: Category,
+    meta: {requiresAuth: false}
+
   },
+
+
+
   {
-    path: '/:category/:product',
-    name: "product",
-    component: Product
-  },
-  {
-    path: '/:category/:product/:type',
-    name: "productinfo",
-    component: ProductInfo
-  },
-  {
-    path: '/:type/add',
-    name: "add",
-    component: Add
+    path: '/:categoryName/:deviceName',
+    name: "device",
+    component: Device,
+    meta: {requiresAuth: false}
+
   }
 ]
 
@@ -94,11 +96,11 @@ async function isAuth(){
   }
 }
 
-router.beforeEach(async(to, from)=>{
-  var is_auth = await isAuth();
-  if(is_auth==to.meta.requiresAuth) return true
-  if(is_auth) return {name: "home"}
-  return {name: "logIn"};
-})
+// router.beforeEach(async(to, from)=>{
+//   var is_auth = await isAuth();
+//   if(is_auth==to.meta.requiresAuth) return true
+//   if(is_auth) return {name: "home"}
+//   return {name: "logIn"};
+// })
 
 export default router;
