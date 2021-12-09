@@ -1,0 +1,7 @@
+componentes para aplicar estilos
+    categories
+    category
+    login
+    signup
+    device
+mutations todavia no 

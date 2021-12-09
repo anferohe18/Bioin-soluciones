@@ -3,21 +3,16 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 
 
 import { createRouter, createWebHistory } from 'vue-router'
-import App from './App.vue'
 import LogIn from './components/LogIn.vue'
 import SignUp from './components/SignUp.vue'
 import Categories from './components/Categories.vue'
 import Category from './components/Category.vue'
 
 import Device from './components/Device.vue'
+import Mutation from './components/Mutation.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'root',
-    component: App,
-    meta: {requiresAuth: false}
-  },
+
   {
     path: '/user/logIn',
     name: "logIn",
@@ -36,25 +31,29 @@ const routes = [
     path: '/categories',
     name: "categories",
     component: Categories,
-    meta: {requiresAuth: false}
+    meta: {requiresAuth: true}
 
   },
   {
     path: '/:categoryName/devices',
     name: "category",
     component: Category,
-    meta: {requiresAuth: false}
+    meta: {requiresAuth: true}
 
   },
-
-
 
   {
     path: '/:categoryName/:deviceName',
     name: "device",
     component: Device,
-    meta: {requiresAuth: false}
+    meta: {requiresAuth: true}
 
+  },
+  {
+    path: '/:name/:mutation',
+    name: "mutation",
+    component: Mutation,
+    meta: {requiresAuth: true}
   }
 ]
 
@@ -89,6 +88,7 @@ async function isAuth(){
       }
     })
     localStorage.setItem("token_access", result.data.refreshToken.access);
+    return true;
   }catch{
     localStorage.clear();
     alert("Session Expired");
@@ -96,11 +96,11 @@ async function isAuth(){
   }
 }
 
-// router.beforeEach(async(to, from)=>{
-//   var is_auth = await isAuth();
-//   if(is_auth==to.meta.requiresAuth) return true
-//   if(is_auth) return {name: "home"}
-//   return {name: "logIn"};
-// })
+router.beforeEach(async(to, from)=>{
+  var is_auth = await isAuth();
+  if(is_auth==to.meta.requiresAuth) return true
+  if(is_auth) return true
+  return {name: "logIn"};
+})
 
 export default router;

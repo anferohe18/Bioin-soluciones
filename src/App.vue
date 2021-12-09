@@ -11,7 +11,7 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
         <div class="header">
           <h1>SA<span>LES SHOW</span>PAD</h1>
           <!-- Change the src -->
-          <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/resources%2Fgeneral%2Fimagen-3-1.png?alt=media&token=36c9dbce-8ab6-479a-bccb-97b3ca09101d" />
+          <img src="pendiente" />
         </div>
 
         <div class="main-component">
@@ -25,25 +25,28 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
             v-on:loadAdd="loadAdd"
             v-on:loadHome="loadHome"
 
+
+
             v-on:loadDevice="loadDevice"
+            v-on:loadMutation="loadMutation"
           ></router-view>
         </div>
 
         <div class="footer">
           <button v-if="is_auth" v-on:click="loadHome">
-            <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/resources%2Fgeneral%2FHome.png?alt=media&token=1223813c-031d-48c5-b905-74dee19d1a95" alt="" />
+            <img src="pendiente" alt="" />
             <p>Home</p>
           </button>
           <button v-if="is_auth" v-on:click="logOut">
-            <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/resources%2Fgeneral%2FLogout.png?alt=media&token=6b8d3506-2657-4047-b7a5-32029b2e4b22" alt="" />
+            <img src="pendiente" alt="" />
             <p>Log Out</p>
           </button>
           <button v-if="!is_auth" v-on:click="loadLogIn">
-            <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/resources%2Fgeneral%2FLogin.png?alt=media&token=ae70a240-40d2-4424-aa74-2041e8703635" alt="" />
+            <img src="pendiente" alt="" />
             <p>Login</p>
           </button>
           <button v-if="!is_auth" v-on:click="loadSignUp">
-            <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/resources%2Fgeneral%2FSignup.png?alt=media&token=62e77714-5872-490a-b333-2869092f63a3" alt="" />
+            <img src="pendiente" alt="" />
             <p>Sign Up</p>
           </button>
         </div>
@@ -119,8 +122,8 @@ export default {
     },
     completedLogIn: function (data) {
       //Almacenar aqui la variable is_admin cuando se implemente esta funcionalidad
-      localStorage.setItem("isAuth", true);
-      localStorage.setItem("username", data.username);
+      //localStorage.setItem("isAuth", true);
+      //localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
       alert("Autenticacion Exitosa");
@@ -138,6 +141,15 @@ export default {
         params: {
           categoryName,
           deviceName
+        }
+      })
+    },
+    loadMutation: function(){
+      this.$router.push({
+        name: "mutation",
+        params: {
+          name: localStorage.getItem("categoryName"),
+          mutation: localStorage.getItem("mutation")
         }
       })
     }
