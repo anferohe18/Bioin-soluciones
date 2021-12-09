@@ -74,7 +74,7 @@ export default {
     logOut: function () {
       localStorage.clear();
       alert("Logged Out");
-      this.verifyAuth();
+      this.loadLogIn();
     },
     loadHome: function(){
       this.$router.push({name: "categories"})

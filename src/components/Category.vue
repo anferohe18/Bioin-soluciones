@@ -23,12 +23,8 @@ Al seleccionar un producto, se pasa al componente de "Product.vue"
           <p>{{ device.name }}</p>
         </button>
 
-
-        <!-- PENDIENTE PONER LO MISMOH -->
-          <button>Update</button>
-          <button>Delete</button>
       </div>
-      <button @click="addProduct">Add</button>
+      <button @click="addDevice">Add</button>
     </div>
   </div>
 </template>
@@ -69,22 +65,17 @@ export default {
     selectDevice: function(deviceId, deviceName){
       localStorage.setItem("deviceId", deviceId)
       localStorage.setItem("deviceName", deviceName)
+      localStorage.setItem("type","device")
       this.$emit("loadDevice", deviceId, localStorage.getItem("categoryName"));
     },
-    // selectProduct: function (productName, id) {
-    //   localStorage.setItem("productName", productName);
-    //   localStorage.setItem("idProduct", id);
-    //   const categoryName = localStorage.getItem("category");
-
-    //   this.$emit("loadProduct", productName, categoryName);
-    // },
-    // addProduct: function () {
-    //   localStorage.setItem("add", localStorage.getItem("category"));
-    //   this.$emit("loadAdd");
-    // },
+    addDevice: function(){
+      localStorage.setItem("type","device")
+      this.$emit("loadMutation");
+    }
   },
   created: function(){
-
+    localStorage.setItem("type","category");
+    this.$apollo.queries.getDevicesByCategoryName.refetch();
   }
 
 

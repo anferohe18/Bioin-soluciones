@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <form v-if="category" v-on:submit.prevent="saveCategory" class="category-form">
+    <form v-if="isCategory" v-on:submit.prevent="saveCategory" class="category-form">
       <h3>
         <span v-if="create">New</span>
         <span v-if="!create">Update {{getCategory}} </span> Category
@@ -10,34 +10,29 @@
       <button type="submit">Save</button>
     </form>
 
-    <form v-if="!category" v-on:submit.prevent="hola" class="device-form">
+    <form v-if="!isCategory" v-on:submit.prevent="saveDevice" class="device-form">
       <h3>
         <span v-if="create">New </span> <span v-if="!create">Update</span>Device
       </h3>
       <input
         type="text"
-        v-model="category.name"
+        v-model="device.name"
         placeholder="Name"
         id="deviceName"
       />
       <input
         type="text"
-        v-model="category.description"
+        v-model="device.description"
         placeholder="Description"
         id="deviceDescription"
       />
       <input
         type="number"
-        v-model="category.price"
+        v-model="device.price"
         placeholder="Price"
         id="devicePrice"
       />
-      <input
-        type="text"
-        v-model="category.categoryName"
-        placeholder="Category"
-        id="deviceCategoryName"
-      />
+     
       <input type="file" name="" id="deviceImg" />
       <button type="submit">Save</button>
     </form>
@@ -52,10 +47,22 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 
 export default {
   name: "mutation",
+  computed: {
+    isCategory:{
+      get: function(){
+        return localStorage.getItem("type") == "category"
+      },
+      set: function(){}
+    },
+    create: {
+      get: function(){
+        return localStorage.getItem("mutation") == "create"   
+      },
+      set: function(){}
+    }
+  },
   data: function () {
     return {
-      create: localStorage.getItem("mutation") == "create",
-      category: localStorage.getItem("type") == "category",
       getCategory: localStorage.getItem("categoryName"),
       category: {
         name: "",
@@ -66,7 +73,7 @@ export default {
         imagePath: "",
         description: "",
         price: 0,
-        categoryName: "",
+        categoryName:"",
       },
       storagePath: ""
     };
@@ -80,10 +87,18 @@ export default {
         this.updateCategory();
       }
     },
+    saveDevice: function(){
+      if(this.create){
+        this.createDevice();
+      } else {
+        this.updateDevice();
+      }
+    },
     createCategory: async function(){
       const name = document.getElementById("categoryName").value;
       const file = document.getElementById("categoryImg").files[0];
       this.category.imagePath = await this.uploadImage(file,name);
+
       await this.$apollo.mutate({
         mutation: gql`
             mutation CreateCategory($category: CategoryInput!) {
@@ -130,6 +145,61 @@ export default {
         console.log(error)
       })
     },
+
+    createDevice: async function(){
+      const name = document.getElementById("deviceName").value;
+      const file = document.getElementById("deviceImg").files[0];
+      this.device.categoryName = localStorage.getItem("categoryName");
+      this.device.imagePath = await this.uploadImage(file,name);
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation CreateDevice($device: DeviceInput!){
+            createDevice(device: $device){
+              name
+              categoryName
+            }
+          }
+        `,
+        variables: {
+          device: this.device
+        }
+      }).then((result)=>{
+        alert(`El dispositivo ${result.data.createDevice.name} ha sido creado`)
+        this.$emit("loadCategory", result.data.createDevice.categoryName);
+      }).catch((error)=>{
+        alert('Ha ocurrido un error')
+        console.log(error)
+      })
+    },
+
+    updateDevice: async function(){
+      const name = document.getElementById("deviceName").value;
+      const file = document.getElementById("deviceImg").files[0];
+      this.device.categoryName = localStorage.getItem("categoryName");
+      this.device.imagePath = await this.uploadImage(file,name);
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation UpdateDevice($updateDeviceId: String!, $device: DeviceInput!){
+            updateDevice(id: $updateDeviceId, device: $device){
+              name
+              categoryName
+            }
+          }
+        `,
+        variables: {
+          device: this.device,
+          updateDeviceId:localStorage.getItem("deviceId")
+
+        }
+      }).then((result)=>{
+        alert(`El dispositivo ${result.data.updateDevice.name} ha sido actualizado`)
+        this.$emit("loadCategory", localStorage.getItem("categoryName"));
+      }).catch((error)=>{
+        alert("Ha ocurrido un error")
+        console.log(error)
+      })
+    },
+
     
 
     uploadImage: async function(file,name){
@@ -154,7 +224,7 @@ export default {
       if(this.category){
         this.storagePath = `${name}/logo/`
       } else {
-        this.storagePath = `${getCategory}/${name}`
+        this.storagePath = `${this.getCategory}/${name}`
       }
     }
   },

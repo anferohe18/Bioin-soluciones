@@ -95,15 +95,15 @@ export default {
       })
     },
     addCategory: function(){
-      localStorage.setItem("categoryName", "category")
-      localStorage.setItem("categoryId", "")  
+      this.storageCategory();
       localStorage.setItem("mutation", "create");
       this.$emit("loadMutation")
     },
 
     storageCategory: function(categoryName, categoryId){
       localStorage.setItem("categoryName", categoryName);
-      localStorage.setItem("categoryId", categoryId)  
+      localStorage.setItem("categoryId", categoryId);
+      localStorage.setItem("type","category");
     }
   },
   created: function(){
