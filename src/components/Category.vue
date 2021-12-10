@@ -20,11 +20,13 @@ Al seleccionar un producto, se pasa al componente de "Product.vue"
         <button @click="selectDevice(device.id, device.name)">
           <!-- Change the src -->
           <img v-bind:src="device.imagePath" />
-          <p>{{ device.name }}</p>
+          <p>{{ device.name }}</p>      
         </button>
 
       </div>
-      <button @click="addDevice">Add</button>
+    </div>
+    <div class="add_category">
+        <button @click="addDevice"><i class=" add fas fa-plus fa-3x"></i></button>
     </div>
   </div>
 </template>
@@ -84,4 +86,89 @@ export default {
 </script>
 <style scoped>
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+
+.categorie {
+  margin: 0;
+  padding: 0%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.categorie .title {
+  text-align: center;
+  color: #0a253a;
+  font-size: 1.2em;
+}
+
+.container_categorie {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.container_categorie .item {
+  width: 160px;
+  height: 220px;
+  margin: 0 8px;
+  align-items: end;
+}
+
+.container_categorie .item button {
+  background: #114358;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.item,
+button {
+  border-radius: 5px;
+  
+}
+
+.categorie button img {
+  width: 5em;
+  height: 7em;
+  margin: 8px;
+}
+
+.categorie button p {
+  text-transform: capitalize;
+  margin: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.categorie button:hover {
+  transform: scale(1.1);
+  background: #F2AA1F
+}
+.botones{
+  display: inline-flex;
+  margin-top: 13px;
+  width: 80px;
+  height: 35px;
+  
+}
+
+.add_category button{
+  margin:10px;
+  padding: 5px;
+  justify-content: center;
+  background: #114358;
+  color: white;
+  box-shadow: 1.5px 1.5px 3px black;
+}
 </style>
+
+

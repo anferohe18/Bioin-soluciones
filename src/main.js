@@ -8,6 +8,8 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core
 import { createApolloProvider } from '@vue/apollo-option'
 import { setContext } from 'apollo-link-context'
 
+
+
 //CONFIGURACION DE FIREBASE
 const firebaseConfig = {
     apiKey: "AIzaSyAVXDUBYDKa2eeW4i-_HP07mVnFwpOnmWg",
