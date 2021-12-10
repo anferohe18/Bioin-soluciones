@@ -19,14 +19,8 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
             v-on:completedLogIn="completedLogIn"
             v-on:completedSignUp="completedSignUp"
             v-on:loadCategory="loadCategory"
-            v-on:loadProduct="loadProduct"
-            v-on:loadProductInfo="loadProductInfo"
             v-on:loadSignUp="loadSignUp"
-            v-on:loadAdd="loadAdd"
             v-on:loadHome="loadHome"
-
-
-
             v-on:loadDevice="loadDevice"
             v-on:loadMutation="loadMutation"
           ></router-view>
@@ -69,15 +63,14 @@ export default {
       }
     }
   },
-  methods: {
-    
+  methods: {  
     logOut: function () {
       localStorage.clear();
       alert("Logged Out");
       this.loadLogIn();
     },
     loadHome: function(){
-      this.$router.push({name: "categories"})
+      this.$router.push({name: "home"})
     },
     loadLogIn: function () {
       this.$router.push({ name: "logIn" });
@@ -93,37 +86,8 @@ export default {
         },
       });
     },
-    loadProduct: function (product, category) {
-      this.$router.push({
-        name: "product",
-        params: {
-          category: category,
-          product: product,
-        },
-      });
-    },
-    loadProductInfo: function (category, product, type) {
-      this.$router.push({
-        name: "productinfo",
-        params: {
-          category: category,
-          product: product,
-          type: type,
-        },
-      });
-    },
-    loadAdd: function(){
-      this.$router.push({
-        name: "add",
-        params : {
-          type: localStorage.getItem("add")
-        }
-      })
-    },
+
     completedLogIn: function (data) {
-      //Almacenar aqui la variable is_admin cuando se implemente esta funcionalidad
-      //localStorage.setItem("isAuth", true);
-      //localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
       alert("Autenticacion Exitosa");
@@ -133,7 +97,6 @@ export default {
       alert("Registro Exitoso");
       this.loadLogIn();
     },
-
 
     loadDevice: function(deviceName, categoryName){
       this.$router.push({

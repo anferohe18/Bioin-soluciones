@@ -19,7 +19,7 @@ Al seleccionar un producto, se pasa al componente de "Product.vue"
       >
         <button @click="selectDevice(device.id, device.name)">
           <!-- Change the src -->
-          <img v-bind:src="device.imagePath" />
+          <img v-bind:src="device.imagePath" style="width: 100px"/>
           <p>{{ device.name }}</p>
         </button>
 
@@ -70,6 +70,7 @@ export default {
     },
     addDevice: function(){
       localStorage.setItem("type","device")
+      localStorage.setItem("mutation","create")
       this.$emit("loadMutation");
     }
   },
@@ -80,7 +81,7 @@ export default {
 
 
 };
-//PENDIENTE TERMINAR EL SCRIPT
+
 </script>
 <style scoped>
 

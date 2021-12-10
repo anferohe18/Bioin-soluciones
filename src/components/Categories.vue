@@ -1,10 +1,4 @@
 
-Muestra las categorias disponibles
-  - Smarttiva
-  - Masimo
-  - calentadores
-Al seleccionar una categoria, se pasa al componente "Category.vue"
-
 <template>
   <div class="categories">
     <div class="title">
@@ -18,7 +12,7 @@ Al seleccionar una categoria, se pasa al componente "Category.vue"
         :key="category.name"
       >
         <button @click="selectCategory(category.name, category.id)">
-          <img v-bind:src="category.imagePath" />
+          <img v-bind:src="category.imagePath" style="width: 100px" />
           <p>{{ category.name }}</p>
           
         </button>
@@ -65,10 +59,6 @@ export default {
       this.storageCategory(categoryName, categoryId);
       this.$emit("loadCategory", categoryName);
     },
-    // addCategory: function(){
-    // localStorage.setItem("add", "categories")
-    // this.$emit("loadAdd")
-    // },
     updateCategory: function(categoryName, categoryId){
       this.storageCategory(categoryName, categoryId);
       localStorage.setItem("mutation", "update")

@@ -7,11 +7,16 @@ import LogIn from './components/LogIn.vue'
 import SignUp from './components/SignUp.vue'
 import Categories from './components/Categories.vue'
 import Category from './components/Category.vue'
-
 import Device from './components/Device.vue'
 import Mutation from './components/Mutation.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Categories,
+    meta: {requiresAuth: true}
+  },
 
   {
     path: '/user/logIn',

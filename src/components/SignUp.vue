@@ -1,16 +1,19 @@
 <template>
-  <div class="signUp_user">
-    <div class="container_signUp_user">
-      <h2>Sign Up</h2>
-      <form v-on:submit.prevent="processSignUp">
-        <input type="text" v-model="user.username" placeholder="Username" />
-        <input type="password" v-model="user.password" placeholder="Password" />
-        <input type="text" v-model="user.name" placeholder="Name" />
-        <input type="email" v-model="user.email" placeholder="E-mail" />
-        <button type="submit">Sign in</button>
-      </form>
+    <div class="signUp_user">
+        <div class="container_signUp_user">
+            <h2>Create an Account</h2>
+            <form v-on:submit.prevent="processSignUp">
+                <input type="text" v-model="user.username" placeholder="Username" />
+                <br />
+                <input type="password" v-model="user.password" placeholder="Password" />
+                <br />
+                <input type="text" v-model="user.name" placeholder="Name" />
+                <br />
+                <input type="email" v-model="user.email" placeholder="Email" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -59,83 +62,52 @@ export default {
 
 <style scoped>
 .signUp_user {
-  margin: 0;
-  padding: 0%;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 .container_signUp_user {
-  background: linear-gradient(
-    #13456a,
-    #124064,
-    #103c5e,
-    #0f3856,
-    #0e3350,
-    #0d2f4a,
-    #0b2a42,
-    #0c283e,
-    #0a253a
-  );
-  border-radius: 5px;
-  width: 30%;
-  height: 95%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    border: solid #a26464;
+    border-radius: 10px;
+    width: 35%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
 .signUp_user h2 {
-  color: white;
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0.5em 0;
+    color: #a26464;
 }
-
 .signUp_user form {
-  width: 70%;
+    width: 70%;
 }
-
 .signUp_user input {
-  height: 40px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 1em;
-  padding: 10px 20px;
-  margin: 5px 0;
-  font-size: 0.9em;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: 1px solid #283747;
 }
-
 .signUp_user button {
-  width: 100%;
-  height: 40px;
-  color: white;
-  background-color: #859b24;
-  border: 1px solid #859b24;
-  border-radius: 50px;
-  padding: 10px 25px;
-  margin: 10px 0;
-  font-size: 1em;
-  font-weight: bold;
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    background-image: linear-gradient(180deg, #a26464, #000);
+    border: 1px solid #e5e7e9;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin: 5px 0 25px 0;
+    font-weight: bold;
 }
-
 .signUp_user button:hover {
-  background-color: #4d5c0d;
-  cursor: pointer;
-}
-
-.signUp_user p {
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  margin: 20px 0 50px 0;
-}
-
-.signUp_user p a {
-  color: #859b24;
+    color: #e5e7e9;
+    background: rgb(109, 64, 73);
+    border: 1px solid #000000;
 }
 </style>
