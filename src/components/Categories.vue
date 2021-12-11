@@ -146,7 +146,7 @@ export default {
 .container_categories .categorie button {
   background: white;
   width: 100%;
-  height: 100%;
+  height: 120%;
   border-radius: 5px;
   color:#5c1c1c;
   cursor: pointer;
@@ -156,6 +156,7 @@ export default {
     -o-box-shadow: 0 0 10px;
   justify-content: center;
   align-content: center;
+  
 }
 
 .container_categories .categorie button:hover {

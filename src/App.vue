@@ -34,13 +34,13 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
         <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/assets%2FBIOIN-SIN.png?alt=media&token=1de4bf6a-4b28-42f3-9b79-4a5298e1e2b3" />
 
         <div id="Email">
-          <span>Email</span>
+          <span>empresabioin@gmail.com</span>
         </div>
         <div id="Help">
-          <span>Ayuda</span>
+          <span>(+57) 3257927931</span>
         </div>
         <div id="Social_networks">
-          <span>Redes sociales</span>
+          <span>www.bioinsoluciones.com</span>
         </div>
       </div>
       <div>
@@ -193,7 +193,6 @@ body {
   right: 0;
   height: 50px;
   width: 100%;
-  font-weight: bold;
   color: rgba(255, 255, 255, 1);
   font-size: 18px;
   justify-content: center;
@@ -213,7 +212,6 @@ body {
   white-space: nowrap;
   font-family: Segoe UI;
   font-style: normal;
-  font-weight: bold;
   font-size: 20px;
   color: rgba(255, 255, 255, 1);
   margin-top: 10px;
@@ -235,7 +233,6 @@ body {
   white-space: nowrap;
   font-family: Segoe UI;
   font-style: normal;
-  font-weight: bold;
   font-size: 20px;
   color: rgba(255, 255, 255, 1);
   margin-top: 10px;
@@ -254,7 +251,6 @@ body {
   text-align: left;
   font-family: Segoe UI;
   font-style: normal;
-  font-weight: bold;
   font-size: 20px;
   color: rgba(255, 255, 255, 1);
   margin-top: 10px;
@@ -267,7 +263,6 @@ body {
   white-space: nowrap;
   font-family: Segoe UI;
   font-style: normal;
-  font-weight: bold;
   font-size: 30px;
   color: rgba(255, 255, 255, 1);
 }

@@ -14,7 +14,7 @@
                 <p>
                     {{getDevice.description}}
                     <br />
-                    <br />Price: {{getDevice.price}}
+                    <br /><b>Price:</b> $ {{getDevice.price}} COP
                 </p>
             </div>
             <div>
