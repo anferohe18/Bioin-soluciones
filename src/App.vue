@@ -1,58 +1,54 @@
 AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENTES
 <template>
-  <html>
-    <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    </head>
-    <body>
-      <div id="app" class="app">
-        <div class="header">
-          <h1>SA<span>LES SHOW</span>PAD</h1>
-          <!-- Change the src -->
-          <img src="pendiente" />
-        </div>
 
-        <div class="main-component">
+  <div id="app" class="app">
+    <div class="header">
+      <div>
+        <img />
+      </div>
+      <nav>
+        <button v-if="is_auth" v-on:click="loadHome">Categories</button>
+        <button v-if="is_auth" v-on:click="logOut">Cerrar Sesión</button>
+        <button v-if="!is_auth" v-on:click="loadLogIn">Iniciar Sesion</button>
+        <button v-if="!is_auth" v-on:click="loadSignUp">Registrarse</button>
+      </nav>
+    </div>
+
+    <div class="main-component">
+      <div class="main-component">
           <router-view
             v-on:completedLogIn="completedLogIn"
             v-on:completedSignUp="completedSignUp"
             v-on:loadCategory="loadCategory"
-            v-on:loadProduct="loadProduct"
-            v-on:loadProductInfo="loadProductInfo"
             v-on:loadSignUp="loadSignUp"
-            v-on:loadAdd="loadAdd"
             v-on:loadHome="loadHome"
-
-
-
             v-on:loadDevice="loadDevice"
             v-on:loadMutation="loadMutation"
           ></router-view>
         </div>
+    </div>
 
-        <div class="footer">
-          <button v-if="is_auth" v-on:click="loadHome">
-            <img src="pendiente" alt="" />
-            <p>Home</p>
-          </button>
-          <button v-if="is_auth" v-on:click="logOut">
-            <img src="pendiente" alt="" />
-            <p>Log Out</p>
-          </button>
-          <button v-if="!is_auth" v-on:click="loadLogIn">
-            <img src="pendiente" alt="" />
-            <p>Login</p>
-          </button>
-          <button v-if="!is_auth" v-on:click="loadSignUp">
-            <img src="pendiente" alt="" />
-            <p>Sign Up</p>
-          </button>
+    <div class="footer">
+      <div></div>
+      <div class="footer-links">
+        <img  />
+
+        <div id="Email">
+          <span>Email</span>
+        </div>
+        <div id="Help">
+          <span>Help</span>
+        </div>
+        <div id="Social_networks">
+          <span>Social networks:</span>
         </div>
       </div>
-    </body>
-  </html>
+      <div>
+        <span>Todos los derechos reservados MINTIC 2022.</span>
+      </div>
+    </div>
+  </div>
+  
 </template>
 
 
@@ -69,15 +65,14 @@ export default {
       }
     }
   },
-  methods: {
-    
+  methods: {  
     logOut: function () {
       localStorage.clear();
       alert("Logged Out");
       this.loadLogIn();
     },
     loadHome: function(){
-      this.$router.push({name: "categories"})
+      this.$router.push({name: "home"})
     },
     loadLogIn: function () {
       this.$router.push({ name: "logIn" });
@@ -93,37 +88,8 @@ export default {
         },
       });
     },
-    loadProduct: function (product, category) {
-      this.$router.push({
-        name: "product",
-        params: {
-          category: category,
-          product: product,
-        },
-      });
-    },
-    loadProductInfo: function (category, product, type) {
-      this.$router.push({
-        name: "productinfo",
-        params: {
-          category: category,
-          product: product,
-          type: type,
-        },
-      });
-    },
-    loadAdd: function(){
-      this.$router.push({
-        name: "add",
-        params : {
-          type: localStorage.getItem("add")
-        }
-      })
-    },
+
     completedLogIn: function (data) {
-      //Almacenar aqui la variable is_admin cuando se implemente esta funcionalidad
-      //localStorage.setItem("isAuth", true);
-      //localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
       alert("Autenticacion Exitosa");
@@ -133,7 +99,6 @@ export default {
       alert("Registro Exitoso");
       this.loadLogIn();
     },
-
 
     loadDevice: function(deviceName, categoryName){
       this.$router.push({
@@ -161,86 +126,158 @@ export default {
 <style>
 body {
   margin: 0 0 0 0;
-  font-family: 'Roboto', sans-serif;
 }
-
+body {
+  margin: 0 0 0 0;
+}
 .header {
   margin: 0%;
   padding: 0;
   width: 100%;
-  height: 8vh;
+  height: 10vh;
   min-height: 100px;
+  color: #e5e7e9;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  background-image: linear-gradient(180deg, #a26464, #000);
   align-items: center;
-  background-color: #c7c7c7;
-  border-bottom: 1px solid #868686;
 }
-
 .header h1 {
-  
-  font-size: 2.5em;
-  color: #0a253a;
-  margin: 0 0.6em;
+  width: 20%;
+  text-align: center;
 }
-
-.header h1 span {
-  color: #859b24;
-}
-
-.header img {
-  width: 3.5em;
-  height: 3.5em;
-}
-
-.footer {
-  margin-top: 10px;
-  padding: 0;
+.header nav {
   width: 100%;
-  height: 15vh;
-  min-height: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #c7c7c7;
-  border-top: 1px solid #868686;
+  justify-content: inherit;
+  font-size: 20px;
+  padding: 0px 30px;
 }
-
-.footer button {
-  background: linear-gradient(#859b24, #5e700d);
-  width: 10%;
-  height: 80%;
-  margin: 0 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 2px solid #5e700d;
-}
-
-.footer button img {
-  width: 3.5em;
-  height: 3.5em;
-  margin: 5px;
-}
-
-.footer button p {
-  margin: 0;
-  color: white;
+.header nav button {
+  background-image: linear-gradient(180deg, #a26464, #000);
+  border: 1px solid #e5e7e9;
+  color: #e5e7e9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
   font-weight: bold;
 }
-
-.footer button:hover {
-  transform: scale(1.1);
-  background-color: #51610a;
+.header nav button:hover {
+  color: #000000;
+  background: #e5e7e9;
+  border: 1px solid #e5e7e9;
+  font-weight: bold;
 }
-
 .main-component {
-  height: 68vh;
+  height: 67vh;
   margin: 0%;
   padding: 0%;
-  overflow-y:scroll
+  background: #fdfefe;
+}
+.footer {
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  background-image: linear-gradient(180deg, #a26464, #000);
+  color: #e5e7e9;
+}
+.footer span {
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+}
+
+#Help {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 10px;
+}
+
+#help {
+  fill: rgba(255, 255, 255, 1);
+}
+.help {
+  overflow: visible;
+  margin-top: 10px;
+}
+#Email {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 10px;
+}
+
+#email-solid {
+  overflow: visible;
+}
+#Social_networks {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  text-align: left;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 10px;
+}
+#n_Todos_los_derechos_reservado {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: bottom;
+  white-space: nowrap;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 1);
+}
+.header img {
+  max-height: 80%;
+  min-height: 40%;
+  width: 35%;
+  margin-left: 20px;
+}
+.footer img {
+  max-height: 40%;
+  min-height: 40%;
+  width: 11%;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 </style>

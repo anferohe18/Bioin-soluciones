@@ -1,11 +1,4 @@
 
-Muestra las categorias disponibles
-  - Smarttiva
-  - Masimo
-  - calentadores
-Al seleccionar una categoria, se pasa al componente "Category.vue"
-
-
 <template>
   <div class="categories">
     <div class="title">
@@ -30,7 +23,7 @@ Al seleccionar una categoria, se pasa al componente "Category.vue"
       </div>
     </div>
     <div class="add_category">
-        <button @click="addCategory"><i class=" add fas fa-plus fa-3x"></i></button>
+        <button v-on:click="addCategory"><i class=" add fas fa-plus fa-3x"></i></button>
     </div>
   </div>
 </template>
@@ -68,10 +61,6 @@ export default {
       this.storageCategory(categoryName, categoryId);
       this.$emit("loadCategory", categoryName);
     },
-    // addCategory: function(){
-    // localStorage.setItem("add", "categories")
-    // this.$emit("loadAdd")
-    // },
     updateCategory: function(categoryName, categoryId){
       this.storageCategory(categoryName, categoryId);
       localStorage.setItem("mutation", "update")
@@ -91,7 +80,7 @@ export default {
         }
       }).then((result)=>{
         alert(`La categoria ${result.data.deleteCategory.name} ha sido eliminada`);
-        this.$apollo.queries.getAllCategories.refetch();
+        this.$emit("loadHome")
       }).catch((error)=>{
         alert(error);
         console.log(error)
@@ -101,6 +90,7 @@ export default {
       localStorage.setItem("categoryName", "category")
       localStorage.setItem("categoryId", "")  
       localStorage.setItem("mutation", "create");
+      localStorage.setItem("type","category")
       this.$emit("loadMutation")
     },
 
@@ -111,6 +101,7 @@ export default {
   },
   created: function(){
     this.$apollo.queries.getAllCategories.refetch();
+    
   }
 
 };
