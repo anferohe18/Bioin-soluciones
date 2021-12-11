@@ -80,7 +80,7 @@ export default {
         }
       }).then((result)=>{
         alert(`La categoria ${result.data.deleteCategory.name} ha sido eliminada`);
-        this.$emit("loadHome")
+        this.$apollo.queries.getAllCategories.refetch();
       }).catch((error)=>{
         alert(error);
         console.log(error)
@@ -123,7 +123,7 @@ export default {
 
 .categories .title {
   text-align: center;
-  color: #0a253a;
+  color: #5c1c1c;
   font-size: 1.2em;
 }
 
@@ -144,13 +144,24 @@ export default {
 }
 
 .container_categories .categorie button {
-  background: #114358;
+  background: white;
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  color: white;
+  color:#5c1c1c;
   cursor: pointer;
-  box-shadow: 1.5px 1.5px 3px black;
+  box-shadow: 0 0 10px;
+    -moz-box-shadow: 0 0 10px;
+    -webkit-box-shadow: 0 0 10px;
+    -o-box-shadow: 0 0 10px;
+  justify-content: center;
+  align-content: center;
+}
+
+.container_categories .categorie button:hover {
+  transform: scale(1.1);
+  background: #5c1c1c;
+  color: white;
 }
 
 .categorie,
@@ -166,31 +177,36 @@ button {
 }
 
 .categories button p {
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin: 5px;
-  color: white;
   font-weight: bold;
   font-size: 1.2em;
 }
 
-.categories button:hover {
-  transform: scale(1.1);
-  background: #F2AA1F
-}
+
+
 .botones{
   display: inline-flex;
   margin-top: 13px;
   width: 80px;
   height: 35px;
-  padding: 10px 30px;
+  padding: 10px 36px;
 }
 
 .add_category button{
   margin:10px;
   padding: 5px;
   justify-content: center;
-  background: #114358;
+  background: #5c1c1c;
   color: white;
-  box-shadow: 1.5px 1.5px 3px black;
+  box-shadow: 0 0 10px;
+    -moz-box-shadow: 0 0 10px;
+    -webkit-box-shadow: 0 0 10px;
+    -o-box-shadow: 0 0 10px;
+}
+.add_category button:hover{
+  cursor: pointer;
+  background: white;
+  color: #5c1c1c;
 }
 </style>

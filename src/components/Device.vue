@@ -91,7 +91,7 @@ export default {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
 
   .container_description {
-    border: solid #a26464;
+    border: solid #5c1c1c;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@ export default {
     margin: 75px 40px 0px 0px;
 }
 .container_description h2 {
-    color: #a26464;
+    color: #5c1c1c;
     text-align: center;
 }
 .container_description h4 {
@@ -108,7 +108,7 @@ export default {
 }
 .container_description button {
     color: #ffffff;
-    background-image: linear-gradient(180deg, #a26464, #000);
+    background-image: linear-gradient(180deg, #5c1c1c, #000);
     border: 1px solid #e5e7e9;
     border-radius: 5px;
     padding: 8px 15px;
@@ -121,8 +121,9 @@ export default {
     justify-content: center;
 }
 .container_description button:hover {
-    color: #e5e7e9;
-    background: rgb(109, 64, 73);
+    cursor: pointer;
+    color: #5c1c1c;
+    background: white;
     border: 1px solid #000000;
 }
 .container_description p {
