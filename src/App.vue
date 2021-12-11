@@ -37,10 +37,10 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
           <span>Email</span>
         </div>
         <div id="Help">
-          <span>Help</span>
+          <span>Ayuda</span>
         </div>
         <div id="Social_networks">
-          <span>Social networks:</span>
+          <span>Redes sociales</span>
         </div>
       </div>
       <div>
@@ -142,7 +142,7 @@ body {
   color: #e5e7e9;
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(180deg, #a26464, #000);
+  background-image: linear-gradient(180deg, #5c1c1c, #000);
   align-items: center;
 }
 .header h1 {
@@ -157,9 +157,9 @@ body {
   padding: 0px 30px;
 }
 .header nav button {
-  background-image: linear-gradient(180deg, #a26464, #000);
-  border: 1px solid #e5e7e9;
-  color: #e5e7e9;
+  background-image: linear-gradient(180deg, rgba(180, 180, 180, 0.575), rgba(180, 180, 180, 0.575));
+  border: 2px solid black;
+  color: black;
   border-radius: 10px;
   padding: 10px 20px;
   text-decoration: none;
@@ -171,6 +171,7 @@ body {
   background: #e5e7e9;
   border: 1px solid #e5e7e9;
   font-weight: bold;
+  cursor: pointer;
 }
 .main-component {
   height: 67vh;
@@ -182,7 +183,7 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100px;
-  background-image: linear-gradient(180deg, #a26464, #000);
+  background-image: linear-gradient(180deg, #5c1c1c, #000);
   color: #e5e7e9;
 }
 .footer span {

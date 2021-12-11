@@ -1,13 +1,13 @@
 <template>
 <div class="logIn_user">
         <div class="container_logIn_user">
-            <h2>Sign in</h2>
+            <h2>Iniciar Sesión</h2>
             <form v-on:submit.prevent="processLogIn">
-                <input type="text" v-model="user.username" placeholder="Username" />
+                <input type="text" v-model="user.username" placeholder="Usuario" />
                 <br />
-                <input type="password" v-model="user.password" placeholder="Password" />
+                <input type="password" v-model="user.password" placeholder="Contraseña" />
                 <br />
-                <button type="submit">Sign In</button>
+                <button type="submit">Iniciar Sesión</button>
             </form>
         </div>
     </div>
@@ -74,7 +74,7 @@ export default {
     align-items: center;
 }
 .container_logIn_user {
-    border: solid #a26464;
+    border: solid #5c1c1c;
     border-radius: 10px;
     width: 25%;
     height: 60%;
@@ -86,9 +86,10 @@ export default {
     -moz-box-shadow: 0 0 10px;
     -webkit-box-shadow: 0 0 10px;
     -o-box-shadow: 0 0 10px;
+    
 }
 .logIn_user h2 {
-    color: #a26464;
+    color: #5c1c1c;
 }
 .logIn_user form {
     width: 70%;
@@ -99,22 +100,25 @@ export default {
     box-sizing: border-box;
     padding: 10px 20px;
     margin: 5px 0;
-    border: 1px solid #000000;
+    border: 1px solid rgb(78, 0, 0);
+    border-radius: 10px;
+
 }
 .logIn_user button {
     width: 100%;
     height: 40px;
     color: #ffffff;
-    background-image: linear-gradient(180deg, #a26464, #000);
+    background-image: linear-gradient(180deg, #5c1c1c, #000);
     border: 1px solid #e5e7e9;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px 25px;
-    margin: 5px 0 25px 0;
+    margin: 10px 0 25px 0;
     font-weight: bold;
+
 }
 .logIn_user button:hover {
-    color: #e5e7e9;
-    background: rgb(109, 64, 73);
+    color: black;
+    background: linear-gradient(180deg, rgb(180, 180, 180),rgb(17, 17, 17));
     border: 1px solid #000000;
     cursor: pointer;
 }
