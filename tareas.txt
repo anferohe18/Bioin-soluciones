@@ -1,7 +1,12 @@
 componentes para aplicar estilos
     categories
-    category
-    login
-    signup
-    device
+    category 
+    login READY✅ 
+    signup READY✅
+    device READY✅
 mutations todavia no 
+
+PENDIENTE: 
+    En categorias separar los botones delete-update del boton general de la categoria
+    En App.vue agregar botones de navegacion Home y logOut
+    Recopilacion de iconos

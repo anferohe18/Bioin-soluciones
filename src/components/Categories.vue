@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="add_category">
-        <button @click="addCategory"><i class=" add fas fa-plus fa-3x"></i></button>
+        <button v-on:click="addCategory"><i class=" add fas fa-plus fa-3x"></i></button>
     </div>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
         }
       }).then((result)=>{
         alert(`La categoria ${result.data.deleteCategory.name} ha sido eliminada`);
-        this.$apollo.queries.getAllCategories.refetch();
+        this.$emit("loadHome")
       }).catch((error)=>{
         alert(error);
         console.log(error)
@@ -90,6 +90,7 @@ export default {
       localStorage.setItem("categoryName", "category")
       localStorage.setItem("categoryId", "")  
       localStorage.setItem("mutation", "create");
+      localStorage.setItem("type","category")
       this.$emit("loadMutation")
     },
 
@@ -100,6 +101,7 @@ export default {
   },
   created: function(){
     this.$apollo.queries.getAllCategories.refetch();
+    
   }
 
 };

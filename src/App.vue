@@ -47,6 +47,8 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
       </div>
     </body>
   </html>
+
+  
 </template>
 
 
