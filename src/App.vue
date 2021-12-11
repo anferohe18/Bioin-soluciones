@@ -7,7 +7,7 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
         <!-- <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/assets%2FBIOIN-SIN.png?alt=media&token=1de4bf6a-4b28-42f3-9b79-4a5298e1e2b3"/> -->
       </div>
       <nav>
-        <button v-if="is_auth" v-on:click="loadHome">Categories</button>
+        <button v-if="is_auth" v-on:click="loadHome">Categorías</button>
         <button v-if="is_auth" v-on:click="logOut">Cerrar Sesión</button>
         <button v-if="!is_auth" v-on:click="loadLogIn">Iniciar Sesion</button>
         <button v-if="!is_auth" v-on:click="loadSignUp">Registrarse</button>

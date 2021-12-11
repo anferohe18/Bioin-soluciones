@@ -1,41 +1,65 @@
 <template>
-  <div class="content">
-    <form v-if="isCategory" v-on:submit.prevent="saveCategory" class="category-form">
+    <div class="content">
+    <div class="container_content" v-if="isCategory">
       <h3>
-        <span v-if="create">New</span>
-        <span v-if="!create">Update {{getCategory}} </span> Category
+        <span v-if="create">Nueva Categoría</span>
+        <span v-if="!create">Actualizar categoría {{ getCategory }}</span>
       </h3>
-      <input type="text" v-model="category.name" placeholder="Name" id="categoryName"/>
-      <input type="file" name="" id="categoryImg" />
-      <button type="submit">Save</button>
-    </form>
+      <form
+        
+        v-on:submit.prevent="saveCategory"
+        class="category-form"
+      >
+        <input
+          type="text"
+          v-model="category.name"
+          placeholder="Name"
+          id="categoryName"
+        />
 
-    <form v-if="!isCategory" v-on:submit.prevent="saveDevice" class="device-form">
+        <div class="image_file">
+          <label><u>Subir Imágen:</u></label>
+          <input type="file" name="" id="categoryImg" />
+        </div>
+        <button type="submit"><i class="fa fa-floppy-o"></i>Guardar</button>
+      </form>
+    </div>
+
+    <div class="container_content" v-if="!isCategory">
       <h3>
-        <span v-if="create">New </span> <span v-if="!create">Update</span>Device
+        <span v-if="create">Nuevo Dispositivo</span>
+        <span v-if="!create">Actualizar Dispositivo</span>
       </h3>
-      <input
-        type="text"
-        v-model="device.name"
-        placeholder="Name"
-        id="deviceName"
-      />
-      <input
-        type="text"
-        v-model="device.description"
-        placeholder="Description"
-        id="deviceDescription"
-      />
-      <input
-        type="number"
-        v-model="device.price"
-        placeholder="Price"
-        id="devicePrice"
-      />
-     
-      <input type="file" name="" id="deviceImg" />
-      <button type="submit">Save</button>
-    </form>
+      <form
+        
+        v-on:submit.prevent="saveDevice"
+        class="device-form"
+      >
+        <input
+          type="text"
+          v-model="device.name"
+          placeholder="Name"
+          id="deviceName"
+        />
+        <input
+          type="text"
+          v-model="device.description"
+          placeholder="Description"
+          id="deviceDescription"
+        />
+        <input
+          type="number"
+          v-model="device.price"
+          placeholder="Price"
+          id="devicePrice"
+        />
+        <div class="image_file">
+          <label><u>Subir Imágen:</u></label>
+          <input type="file" name="" id="deviceImg" />
+        </div>
+        <button type="submit"><i class="fa fa-floppy-o"></i>Guardar</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -234,5 +258,123 @@ export default {
 </script>
 
 <style scoped>
+  .content {
+  margin: 0;
+  padding: 0%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.container_content {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+  -moz-box-shadow: 0 0 10px;
+  -webkit-box-shadow: 0 0 10px;
+  -o-box-shadow: 0 0 10px;
+  width: 40%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_content h3 span {
+  color: #5c1c1c;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.container_content form {
+  width: 80%;
+}
+
+.container_content input {
+  height: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #5c1c1c;
+  padding: 10px 20px;
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.container_content .image_file {
+  padding: 5px;
+  margin: 5px 2px;
+  border: 1px solid #5c1c1c;
+  border-radius: 10px;
+}
+
+.container_content .image_file label {
+  color: #5c1c1c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  size: 0.8em;
+  margin: 0;
+  padding: 0;
+}
+
+.container_content .image_file input[type="file"] {
+  border: none;
+  color: #5c1c1c;
+  width: 100%;
+  font-style: italic;
+  margin: 5px 30px;
+  height: 50px;
+}
+
+.container_content input[type="file"]::file-selector-button {
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: #5c1c1c;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.container_content input[type="file"]::file-selector-button:hover {
+  background-color: white;
+  color: #5c1c1c;
+  cursor: pointer;
+}
+
+.container_content button {
+  width: 40%;
+  height: 40px;
+  color: white;
+  background-color: #5c1c1c;
+  border: 2px solid rgb(78, 0, 0);
+  border-radius: 10px;
+  padding: 10px 25px;
+  margin: 10px 8em;
+  font-size: 1.1em;
+  font-weight: bold;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container_content button i {
+  margin: 0 10px;
+}
+
+.container_content button:active {
+  transform: scale(0.95);
+}
+
+.container_content button:hover {
+  background-color: white;
+  color: #5c1c1c;
+  cursor: pointer;
+}
 </style>

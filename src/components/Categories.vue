@@ -2,7 +2,7 @@
 <template>
   <div class="categories">
     <div class="title">
-      <h1>CATEGORIES</h1>
+      <h1>CATEGORÍAS</h1>
     </div>
     <div class="container_categories">
       <div
