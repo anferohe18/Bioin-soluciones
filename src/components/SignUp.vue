@@ -79,9 +79,13 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 10px;
+    -moz-box-shadow: 0 0 10px;
+    -webkit-box-shadow: 0 0 10px;
+    -o-box-shadow: 0 0 10px;
 }
 .signUp_user h2 {
-    color: #a26464;
+    color: #5c1c1c;
 }
 .signUp_user form {
     width: 70%;
@@ -109,5 +113,9 @@ export default {
     color: #e5e7e9;
     background: rgb(109, 64, 73);
     border: 1px solid #000000;
+    cursor: pointer;
+}
+.signUp_user button:active {
+    transform: scale(0.95);
 }
 </style>

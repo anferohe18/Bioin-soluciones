@@ -4,7 +4,7 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
   <div id="app" class="app">
     <div class="header">
       <div>
-        <img />
+        <!-- <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/assets%2FBIOIN-SIN.png?alt=media&token=1de4bf6a-4b28-42f3-9b79-4a5298e1e2b3"/> -->
       </div>
       <nav>
         <button v-if="is_auth" v-on:click="loadHome">Categories</button>
@@ -31,7 +31,7 @@ AQUI SE ENCUENTRA EL HEADER Y FOOTER, QUE SON GENERALES PARA LOS DEMAS COMPONENT
     <div class="footer">
       <div></div>
       <div class="footer-links">
-        <img  />
+        <img src="https://firebasestorage.googleapis.com/v0/b/bioin-soluciones-bucket.appspot.com/o/assets%2FBIOIN-SIN.png?alt=media&token=1de4bf6a-4b28-42f3-9b79-4a5298e1e2b3" />
 
         <div id="Email">
           <span>Email</span>
@@ -72,7 +72,7 @@ export default {
       this.loadLogIn();
     },
     loadHome: function(){
-      this.$router.push({name: "home"})
+      this.$router.push({name: "categories"})
     },
     loadLogIn: function () {
       this.$router.push({ name: "logIn" });
@@ -124,6 +124,9 @@ export default {
 </script>
 
 <style>
+* {
+font-family: 'Roboto', sans-serif;
+}
 body {
   margin: 0 0 0 0;
 }
