@@ -18,8 +18,8 @@
                 </p>
             </div>
             <div>
-                <button @click="updateDevice">Edit device</button>
-                <button @click="deleteDevice">Delete device</button>
+                <button @click="updateDevice"><i class="bo fa-solid fa-pen-to-square"></i></button>
+                <button @click="deleteDevice"><i class=" bo fa-solid fa-trash-can"></i></button>
             </div>
         </div>
     </div>
@@ -87,6 +87,9 @@ export default {
 </script>
 
 <style>
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+
   .container_description {
     border: solid #a26464;
     border-radius: 10px;
