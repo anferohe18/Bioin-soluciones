@@ -20,12 +20,12 @@ Al seleccionar una categoria, se pasa al componente "Category.vue"
       >
         <button @click="selectCategory(category.name, category.id)">
           <img v-bind:src="category.imagePath" />
-          <p>{{ category.name }}</p>
-          <div class="botones">        
+          <p>{{ category.name }}</p>  
+        </button>
+        <div class="botones">        
             <button @click="updateCategory(category.name, category.id)"><i class="bo fa-solid fa-pen-to-square"></i></button>
             <button @click="deleteCategory(category.id)" ><i class=" bo fa-solid fa-trash-can"></i></button> 
-          </div>     
-        </button>
+        </div>   
 
       </div>
     </div>
@@ -146,8 +146,8 @@ export default {
 }
 
 .container_categories .categorie {
-  width: 160px;
-  height: 220px;
+  width: 150px;
+  height: 160px;
   margin: 0 8px;
   align-items: end;
 }
@@ -191,7 +191,7 @@ button {
   margin-top: 13px;
   width: 80px;
   height: 35px;
-  
+  padding: 10px 30px;
 }
 
 .add_category button{
